@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "inlineSourceMap": true,
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "skipLibCheck": true,
+    "strictFunctionTypes": true,
+    "target": "es5",
+    "lib": [ "es6", "dom", "webworker", "scripthost" ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
