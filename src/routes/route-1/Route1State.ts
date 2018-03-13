@@ -1,1 +1,3 @@
-export interface Route1State {}
+export interface Route1State {
+    fib: number
+}

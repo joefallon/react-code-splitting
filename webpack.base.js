@@ -19,6 +19,13 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.worker\.js$/,
+                use: {
+                    loader: 'worker-loader',
+                    options: { inline: true, fallback: false }
+                }
+            },
             { enforce: 'pre', test: /\.js$/, use: 'source-map-loader' },
             {
                 test: /\.(jpe?g|png|gif|svg)$/,

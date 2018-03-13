@@ -3,7 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "downlevelIteration": true,
-    "importHelpers": true,
+    "importHelpers": false,
     "inlineSourceMap": true,
     "jsx": "react",
     "module": "esnext",
@@ -15,6 +15,8 @@
     "target": "es5",
     "lib": [ "es6", "dom", "webworker", "scripthost" ]
   },
+  "include": [
+    "./typings/custom.d.ts", "./src/**/*.tsx", "./src/**/*.ts"],
   "exclude": [
     "node_modules"
   ]

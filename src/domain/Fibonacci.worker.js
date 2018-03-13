@@ -34,12 +34,35 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
-import { configure } from 'enzyme';
-import * as Adapter from 'enzyme-adapter-react-16';
-before(function () { return __awaiter(_this, void 0, void 0, function () {
+import { Fibonacci } from './Fibonacci';
+var worker = self;
+var fibonacci = null;
+// worker.onmessage = async (ev: MessageEvent) => {
+//     console.log('in worker...');
+//
+//     const msg = JSON.parse(ev.data); // should be in try catch
+//     fibonacci = new Fibonacci(msg['num']);
+//     const result = await fibonacci.calculate();
+//
+//     console.log('result = ' + result);
+//
+//     worker.postMessage(JSON.stringify(result));
+// };
+worker.addEventListener("message", function (ev) { return __awaiter(_this, void 0, void 0, function () {
+    var msg, result;
     return __generator(this, function (_a) {
-        configure({ adapter: new Adapter() });
-        return [2 /*return*/];
+        switch (_a.label) {
+            case 0:
+                console.log('in worker...');
+                msg = JSON.parse(ev.data);
+                fibonacci = new Fibonacci(msg['num']);
+                return [4 /*yield*/, fibonacci.calculate()];
+            case 1:
+                result = _a.sent();
+                console.log('result = ' + result);
+                worker.postMessage(JSON.stringify(result));
+                return [2 /*return*/];
+        }
     });
 }); });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZ2xvYmFsX2JlZm9yZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImdsb2JhbF9iZWZvcmUudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsaUJBS0c7QUFMSCxPQUFPLEVBQUUsU0FBUyxFQUFFLE1BQU0sUUFBUSxDQUFDO0FBQ25DLE9BQU8sS0FBSyxPQUFPLE1BQU0seUJBQXlCLENBQUM7QUFFbkQsTUFBTSxDQUFDOztRQUNILFNBQVMsQ0FBQyxFQUFFLE9BQU8sRUFBRSxJQUFJLE9BQU8sRUFBRSxFQUFFLENBQUMsQ0FBQzs7O0tBQ3pDLENBQUMsQ0FBQyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRmlib25hY2NpLndvcmtlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkZpYm9uYWNjaS53b3JrZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxpQkEyQkc7QUEzQkgsT0FBTyxFQUFFLFNBQVMsRUFBRSxNQUFNLGFBQWEsQ0FBQztBQUV4QyxJQUFNLE1BQU0sR0FBVyxJQUFXLENBQUM7QUFDbkMsSUFBSSxTQUFTLEdBQWMsSUFBSSxDQUFDO0FBRWhDLG1EQUFtRDtBQUNuRCxtQ0FBbUM7QUFDbkMsRUFBRTtBQUNGLGlFQUFpRTtBQUNqRSw2Q0FBNkM7QUFDN0Msa0RBQWtEO0FBQ2xELEVBQUU7QUFDRix5Q0FBeUM7QUFDekMsRUFBRTtBQUNGLGtEQUFrRDtBQUNsRCxLQUFLO0FBRUwsTUFBTSxDQUFDLGdCQUFnQixDQUFDLFNBQVMsRUFBRSxVQUFPLEVBQWdCOzs7OztnQkFDdEQsT0FBTyxDQUFDLEdBQUcsQ0FBQyxjQUFjLENBQUMsQ0FBQztnQkFFdEIsR0FBRyxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsRUFBRSxDQUFDLElBQUksQ0FBQyxDQUFDO2dCQUNoQyxTQUFTLEdBQUcsSUFBSSxTQUFTLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUM7Z0JBQ3ZCLHFCQUFNLFNBQVMsQ0FBQyxTQUFTLEVBQUUsRUFBQTs7Z0JBQXBDLE1BQU0sR0FBRyxTQUEyQjtnQkFFMUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxXQUFXLEdBQUcsTUFBTSxDQUFDLENBQUM7Z0JBRWxDLE1BQU0sQ0FBQyxXQUFXLENBQUMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxNQUFNLENBQUMsQ0FBQyxDQUFDOzs7O0tBQzlDLENBQUMsQ0FBQyJ9

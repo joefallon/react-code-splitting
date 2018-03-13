@@ -33,13 +33,34 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
-import { configure } from 'enzyme';
-import * as Adapter from 'enzyme-adapter-react-16';
-before(function () { return __awaiter(_this, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        configure({ adapter: new Adapter() });
-        return [2 /*return*/];
-    });
-}); });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZ2xvYmFsX2JlZm9yZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImdsb2JhbF9iZWZvcmUudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsaUJBS0c7QUFMSCxPQUFPLEVBQUUsU0FBUyxFQUFFLE1BQU0sUUFBUSxDQUFDO0FBQ25DLE9BQU8sS0FBSyxPQUFPLE1BQU0seUJBQXlCLENBQUM7QUFFbkQsTUFBTSxDQUFDOztRQUNILFNBQVMsQ0FBQyxFQUFFLE9BQU8sRUFBRSxJQUFJLE9BQU8sRUFBRSxFQUFFLENBQUMsQ0FBQzs7O0tBQ3pDLENBQUMsQ0FBQyJ9
+var Fibonacci = /** @class */ (function () {
+    function Fibonacci(num) {
+        this._num = num;
+    }
+    Fibonacci.prototype.calculate = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                if (this._num == 0) {
+                    resolve(0);
+                }
+                setImmediate(function () {
+                    var previous_first = 0;
+                    var previous_second = 1;
+                    var next = 1;
+                    for (var i = 2; i <= _this._num; i++) {
+                        next = previous_first + previous_second;
+                        previous_first = previous_second;
+                        previous_second = next;
+                    }
+                    resolve(next);
+                });
+                return [2 /*return*/];
+            });
+        }); });
+    };
+    return Fibonacci;
+}());
+export { Fibonacci };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRmlib25hY2NpLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiRmlib25hY2NpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUE7SUFHSSxtQkFBbUIsR0FBVztRQUMxQixJQUFJLENBQUMsSUFBSSxHQUFHLEdBQUcsQ0FBQztJQUNwQixDQUFDO0lBRU0sNkJBQVMsR0FBaEI7UUFBQSxpQkFrQkM7UUFqQkcsTUFBTSxDQUFDLElBQUksT0FBTyxDQUFDLFVBQU8sT0FBTyxFQUFFLE1BQU07OztnQkFDckMsRUFBRSxDQUFBLENBQUMsSUFBSSxDQUFDLElBQUksSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFDO29CQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUMsQ0FBQztnQkFBQyxDQUFDO2dCQUVsQyxZQUFZLENBQUM7b0JBQ1QsSUFBSSxjQUFjLEdBQUcsQ0FBQyxDQUFDO29CQUN2QixJQUFJLGVBQWUsR0FBRyxDQUFDLENBQUM7b0JBQ3hCLElBQUksSUFBSSxHQUFHLENBQUMsQ0FBQztvQkFFYixHQUFHLENBQUEsQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxJQUFJLEtBQUksQ0FBQyxJQUFJLEVBQUUsQ0FBQyxFQUFFLEVBQUUsQ0FBQzt3QkFDakMsSUFBSSxHQUFHLGNBQWMsR0FBRyxlQUFlLENBQUM7d0JBQ3hDLGNBQWMsR0FBRyxlQUFlLENBQUM7d0JBQ2pDLGVBQWUsR0FBRyxJQUFJLENBQUM7b0JBQzNCLENBQUM7b0JBRUQsT0FBTyxDQUFDLElBQUksQ0FBQyxDQUFDO2dCQUNsQixDQUFDLENBQUMsQ0FBQzs7O2FBQ04sQ0FBQyxDQUFDO0lBQ1AsQ0FBQztJQUNMLGdCQUFDO0FBQUQsQ0FBQyxBQTFCRCxJQTBCQyJ9
