@@ -1,8 +1,8 @@
 'use strict';
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin  = require('copy-webpack-plugin');
+const ExtractTextPlugin  = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin  = require('html-webpack-plugin');
 const path = require('path');
 
 
@@ -20,10 +20,10 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.worker\.js$/,
+                test: /\.worker\.ts$/,
                 use: {
                     loader: 'worker-loader',
-                    options: { inline: true, fallback: false }
+                    options: { inline: false, fallback: false }
                 }
             },
             { enforce: 'pre', test: /\.js$/, use: 'source-map-loader' },
