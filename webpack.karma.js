@@ -45,6 +45,7 @@ module.exports = {
 
     plugins: [
         new ExtractTextPlugin('styles/styles.[hash:8].css'),
-        new webpack.DefinePlugin({__API__: __API__})
+        new webpack.DefinePlugin({__API__: __API__}),
+        new webpack.ProvidePlugin({Promise: 'es6-promise'})
     ]
 };
