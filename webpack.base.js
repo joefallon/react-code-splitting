@@ -4,6 +4,7 @@ const CopyWebpackPlugin  = require('copy-webpack-plugin');
 const ExtractTextPlugin  = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin  = require('html-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 
 module.exports = {
@@ -44,6 +45,7 @@ module.exports = {
         new CopyWebpackPlugin([ {from:'static/img',to:'img'} ]),
         new CopyWebpackPlugin([ {from:'static/fonts',to:'fonts'} ]),
         new CommonsChunkPlugin({ names: ['vendor', 'manifest'] }),
-        new HtmlWebpackPlugin({ template: './static/index.html' })
+        new HtmlWebpackPlugin({ template: './static/index.html' }),
+        new webpack.ProvidePlugin({Promise: 'es6-promise'})
     ]
 };
