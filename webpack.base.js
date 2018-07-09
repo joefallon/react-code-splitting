@@ -1,7 +1,7 @@
 'use strict';
-const CopyWebpackPlugin  = require('copy-webpack-plugin');
-const ExtractTextPlugin  = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin  = require('html-webpack-plugin');
+const CopyWebpackPlugin    = require('copy-webpack-plugin');
+const HtmlWebpackPlugin    = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path    = require('path');
 const webpack = require('webpack');
 
@@ -36,6 +36,10 @@ module.exports = {
                 test: /\.(ttf|eot|woff|woff2)$/,
                 loader: 'file-loader',
                 options: { name: 'fonts/[name].[ext]' }
+            },
+            {
+                test: /\.css$/,
+                use: [{ loader: MiniCssExtractPlugin.loader, options: { publicPath: '/' }}, "css-loader"]
             }
         ]
     },
@@ -56,12 +60,18 @@ module.exports = {
                     chunks: 'initial',
                     minChunks: 2,
                     minSize: 0
+                },
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true
                 }
             }
         }
     },
     plugins: [
-        new ExtractTextPlugin('styles/styles.[hash:6].css'),
+        new MiniCssExtractPlugin({ filename: "styles/[name].[hash:6].css" }),
         new CopyWebpackPlugin([ {from:'static/img',to:'img'} ]),
         new CopyWebpackPlugin([ {from:'static/fonts',to:'fonts'} ]),
         new HtmlWebpackPlugin({ template: './static/index.html' }),

@@ -1,9 +1,8 @@
 'use strict';
-const webpack           = require('webpack');
-const common            = require('./webpack.base.js');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const merge             = require('webpack-merge');
-const path              = require('path');
+const webpack = require('webpack');
+const common  = require('./webpack.base.js');
+const merge   = require('webpack-merge');
+const path    = require('path');
 
 const __API__ = JSON.stringify('http://localhost:10080/');
 
@@ -34,15 +33,6 @@ module.exports = merge(common, {
         poll: false,
         ignored: [ /node_modules/,  "src/**/*.tsx", "src/**/*.ts", "src/**/*.test.*",
                    "src/**/*.scss", "src/**/*.css" ]
-    },
-
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: [{ loader: 'css-loader' }]})
-            }
-        ]
     },
 
     plugins: [

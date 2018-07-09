@@ -1,7 +1,8 @@
 'use strict';
-const webpack           = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path              = require('path');
+
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack              = require('webpack');
+const path                 = require('path');
 
 const __API__ = JSON.stringify('http://localhost:10080/');
 
@@ -35,7 +36,7 @@ module.exports = {
             { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+                use: [{ loader: MiniCssExtractPlugin.loader, options: { publicPath: '/' }}, "css-loader"]
             },
             {
                 test: /\.(ttf|eot|woff|woff2)$/,
@@ -46,7 +47,7 @@ module.exports = {
     },
 
     plugins: [
-        new ExtractTextPlugin('styles/styles.[hash:8].css'),
+        new MiniCssExtractPlugin({ filename: "styles/[name].[hash:6].css" }),
         new webpack.DefinePlugin({__API__: __API__}),
         new webpack.ProvidePlugin({Promise: 'es6-promise'})
     ]

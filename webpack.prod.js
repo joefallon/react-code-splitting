@@ -1,8 +1,9 @@
 'use strict';
-const webpack        = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const merge          = require('webpack-merge');
-const common         = require('./webpack.base.js');
+const webpack                 = require('webpack');
+const UglifyJSPlugin          = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const merge  = require('webpack-merge');
+const common = require('./webpack.base.js');
 
 const __API__ = JSON.stringify('http://localhost:10080/');
 
@@ -15,6 +16,15 @@ const NODE_ENV = {
 module.exports = merge(common, {
 
     mode: 'production',
+
+    optimization: {
+        minimizer: [
+            new OptimizeCSSAssetsPlugin({
+                cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
+                canPrint: true
+            })
+        ]
+    },
 
     plugins: [
         new UglifyJSPlugin({ }),

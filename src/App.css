@@ -1,2 +1,5 @@
 /* App.scss */
 /* _variables.scss */
+body {
+    font-size: 14px;
+}
