@@ -1,9 +1,8 @@
 'use strict';
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin  = require('copy-webpack-plugin');
 const ExtractTextPlugin  = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin  = require('html-webpack-plugin');
-const path = require('path');
+const path    = require('path');
 const webpack = require('webpack');
 
 
@@ -40,11 +39,31 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        // runtimeChunk: 'single',  // creates runtime.js
+        runtimeChunk: {
+            name: 'vendor'  // places webpack runtime in vendor.js
+        },
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /node_modules/,
+                    name: 'vendor',
+                    chunks: 'initial'
+                },
+                common: {
+                    name: 'common',
+                    chunks: 'initial',
+                    minChunks: 2,
+                    minSize: 0
+                }
+            }
+        }
+    },
     plugins: [
         new ExtractTextPlugin('styles/styles.[hash:6].css'),
         new CopyWebpackPlugin([ {from:'static/img',to:'img'} ]),
         new CopyWebpackPlugin([ {from:'static/fonts',to:'fonts'} ]),
-        new CommonsChunkPlugin({ names: ['vendor', 'manifest'] }),
         new HtmlWebpackPlugin({ template: './static/index.html' }),
         new webpack.ProvidePlugin({Promise: 'es6-promise'})
     ]
