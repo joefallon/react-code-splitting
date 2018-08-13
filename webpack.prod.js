@@ -20,7 +20,7 @@ module.exports = merge(common, {
     optimization: {
         minimizer: [
             new OptimizeCSSAssetsPlugin({
-                cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
+                cssProcessorOptions: { discardComments: { removeAll: true } },
                 canPrint: true
             })
         ]
