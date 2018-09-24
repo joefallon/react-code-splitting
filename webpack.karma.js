@@ -1,6 +1,6 @@
 'use strict';
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack              = require('webpack');
 const path                 = require('path');
 
@@ -11,7 +11,7 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: "js/index.js"
+        filename: 'js/index.js'
     },
 
     devtool: 'inline-source-map',
@@ -19,8 +19,8 @@ module.exports = {
     mode: 'development',
 
     watchOptions: {
-        aggregateTimeout: 50,
-        poll: false,
+        aggregateTimeout: 500,
+        poll: true,
         ignored: [ /node_modules/, "src/**/*.tsx", "src/**/*.ts", "src/**/*.scss", "src/**/*.css" ]
     },
 
@@ -36,7 +36,7 @@ module.exports = {
             { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
             {
                 test: /\.css$/,
-                use: [{ loader: MiniCssExtractPlugin.loader, options: { publicPath: '/' }}, "css-loader"]
+                use: [{ loader: MiniCssExtractPlugin.loader, options: { publicPath: '/' }}, 'css-loader']
             },
             {
                 test: /\.(ttf|eot|woff|woff2)$/,
@@ -48,7 +48,6 @@ module.exports = {
 
     plugins: [
         new MiniCssExtractPlugin({ filename: "styles/[name].[hash:6].css" }),
-        new webpack.DefinePlugin({__API__: __API__}),
-        new webpack.ProvidePlugin({Promise: 'es6-promise'})
+        new webpack.DefinePlugin({__API__: __API__})
     ]
 };

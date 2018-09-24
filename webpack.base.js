@@ -8,8 +8,7 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        app: './src/index.js',
-        vendor: ['react', 'react-dom', 'react-router-dom']
+        app: './src/index.js'
     },
     output: {
         path: path.resolve(__dirname, 'public'),
@@ -53,11 +52,11 @@ module.exports = {
                 vendor: {
                     test: /node_modules/,
                     name: 'vendor',
-                    chunks: 'initial'
+                    chunks: 'initial'   // or 'all' or 'initial'
                 },
                 common: {
                     name: 'common',
-                    chunks: 'initial',
+                    chunks: 'all',  // or 'all' or 'initial'
                     minChunks: 2,
                     minSize: 0
                 },
@@ -74,7 +73,6 @@ module.exports = {
         new MiniCssExtractPlugin({ filename: "styles/[name].[hash:6].css" }),
         new CopyWebpackPlugin([ {from:'static/img',to:'img'} ]),
         new CopyWebpackPlugin([ {from:'static/fonts',to:'fonts'} ]),
-        new HtmlWebpackPlugin({ template: './static/index.html' }),
-        new webpack.ProvidePlugin({Promise: 'es6-promise'})
+        new HtmlWebpackPlugin({ template: './static/index.html' })
     ]
 };
