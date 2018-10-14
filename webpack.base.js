@@ -1,20 +1,22 @@
 'use strict';
 const CopyWebpackPlugin    = require('copy-webpack-plugin');
 const HtmlWebpackPlugin    = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path    = require('path');
-const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 
 module.exports = {
     entry: {
-        app: './src/index.js'
+        app: './src/index.tsx'
     },
     output: {
         path: path.resolve(__dirname, 'public'),
         publicPath: '/',
-        filename: "js/[name].[chunkhash:6].js",
+        filename: 'js/[name].[chunkhash:6].js',
         chunkFilename: 'js/[name].[chunkhash:6].js'
+    },
+    resolve: {
+        extensions: [".ts", ".tsx", ".js"]
     },
     module: {
         rules: [
@@ -23,6 +25,14 @@ module.exports = {
                 use: {
                     loader: 'worker-loader',
                     options: { inline: false, fallback: false }
+                }
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+                options: {
+                    transpileOnly: true
                 }
             },
             { enforce: 'pre', test: /\.js$/, use: 'source-map-loader' },
@@ -38,21 +48,21 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [{ loader: MiniCssExtractPlugin.loader, options: { publicPath: '/' }}, "css-loader"]
+                use: [{ loader: MiniCssExtractPlugin.loader, options: { publicPath: '/' }}, 'css-loader']
             }
         ]
     },
     optimization: {
         // runtimeChunk: 'single',  // creates runtime.js
         runtimeChunk: {
-            name: 'vendor'  // places webpack runtime in vendor.js
+            name: 'manifest'  // places webpack runtime in manifest.js
         },
         splitChunks: {
             cacheGroups: {
                 vendor: {
                     test: /node_modules/,
                     name: 'vendor',
-                    chunks: 'initial'   // or 'all' or 'initial'
+                    chunks: 'all'   // or 'all' or 'initial'
                 },
                 common: {
                     name: 'common',
@@ -70,7 +80,7 @@ module.exports = {
         }
     },
     plugins: [
-        new MiniCssExtractPlugin({ filename: "styles/[name].[hash:6].css" }),
+        new MiniCssExtractPlugin({ filename: 'styles/[name].[hash:6].css' }),
         new CopyWebpackPlugin([ {from:'static/img',to:'img'} ]),
         new CopyWebpackPlugin([ {from:'static/fonts',to:'fonts'} ]),
         new HtmlWebpackPlugin({ template: './static/index.html' })

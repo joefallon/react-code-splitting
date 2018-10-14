@@ -20,9 +20,9 @@ module.exports = function(config) {
         autoWatchBatchDelay: 0,
 
         // test results reporter to use
-        // possible values: 'dots', 'progress'
+        // possible values: 'dots', 'progress', 'mocha'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['dots'],
+        reporters: ['mocha'],
 
         // web server port
         port: 9876,
