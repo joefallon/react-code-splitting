@@ -1,4 +1,4 @@
-export class Fibonacci {
+export default class Fibonacci {
     private _num: number;
 
     public constructor(num: number) {
@@ -9,7 +9,7 @@ export class Fibonacci {
         return new Promise(async (resolve, reject) => {
             if(this._num == 0) { resolve(0); }
 
-            setImmediate(() => {
+            setTimeout(() => {
                 let previous_first = 0;
                 let previous_second = 1;
                 let next = 1;
@@ -21,7 +21,7 @@ export class Fibonacci {
                 }
 
                 resolve(next);
-            });
+            }, 0);
         });
     }
 }

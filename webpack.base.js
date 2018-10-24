@@ -24,13 +24,13 @@ module.exports = {
                 test: /\.worker\.ts$/,
                 use: {
                     loader: 'worker-loader',
-                    options: { inline: false, fallback: false }
+                    options: { inline: false, fallback: true }
                 }
             },
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
-                exclude: /node_modules/,
+                exclude: [/node_modules/],
                 options: {
                     transpileOnly: true
                 }

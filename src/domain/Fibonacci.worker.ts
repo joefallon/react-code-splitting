@@ -1,7 +1,9 @@
-import { Fibonacci } from './Fibonacci';
+import  Fibonacci from './Fibonacci';
 
 const worker: Worker = self as any;
 let fibonacci: Fibonacci = null;
+
+console.log('worker loaded...');
 
 worker.onmessage = async (ev: MessageEvent) => {
     console.log('in worker...');
@@ -14,3 +16,5 @@ worker.onmessage = async (ev: MessageEvent) => {
 
     worker.postMessage(JSON.stringify(result));
 };
+
+export default Worker;
