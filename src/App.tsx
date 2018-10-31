@@ -20,7 +20,7 @@ export class App extends React.Component {
     public render(): JSX.Element {
         return (
             <Switch>
-                <Route exact path='/'           render={(props) => this.renderIndex(props)}/>
+                <Route exact path='/'        render={(props) => this.renderIndex(props)}/>
                 <Route exact path='/route-1' render={(props) => this.renderRoute1(props)}/>
                 <Route exact path='/route-2' render={(props) => this.renderRoute2(props)}/>
                 <Route exact path='/route-3' render={(props) => this.renderRoute3(props)}/>
@@ -30,47 +30,41 @@ export class App extends React.Component {
     }
 
     private renderIndex = (props: IndexRouteProps): JSX.Element => {
-        const LoadableIndexRoute = Loadable({
-            loader: () => import(/* webpackChunkName: "index-route" */'./routes/index/IndexRoute'),
-            loading: () => { return <div>Loading...</div>; },
-            delay: 300,
-            timeout: 10000
+        const LoadableRoute = Loadable({
+            loader:  () => import(/* webpackChunkName: "index-route" */'./routes/index/IndexRoute'),
+            loading: () => null
         });
 
-        return (<LoadableIndexRoute {...props} />);
+        return (<LoadableRoute {...props} />);
     };
 
     private renderRoute1 = (props: Route1Props): JSX.Element => {
-        const LoadableRoute1 = Loadable({
-            loader: () => import(/* webpackChunkName: "route-1" */'./routes/route-1/Route1'),
-            loading: () => { return <div>Loading...</div>; },
-            delay: 300,
-            timeout: 10000
+        const LoadableRoute = Loadable({
+            loader:  () => {
+                return import(/* webpackChunkName: "route-1" */'./routes/route-1/Route1');
+            },
+            loading: () => null
         });
 
-        return (<LoadableRoute1 {...props} />);
+        return (<LoadableRoute {...props} />);
     };
 
     private renderRoute2 = (props: Route2Props): JSX.Element => {
-        const LoadableRoute2 = Loadable({
-            loader: () => import(/* webpackChunkName: "route-2" */'./routes/route-2/Route2'),
-            loading: () => { return <div>Loading...</div>; },
-            delay: 300,
-            timeout: 10000
+        const LoadableRoute = Loadable({
+            loader:  () => import(/* webpackChunkName: "route-2" */'./routes/route-2/Route2'),
+            loading: () => null
         });
 
-        return (<LoadableRoute2 {...props} />);
+        return (<LoadableRoute {...props} />);
     };
 
     private renderRoute3 = (props: Route3Props): JSX.Element => {
-        const LoadableRoute3 = Loadable({
-            loader: () => import(/* webpackChunkName: "route-3" */'./routes/route-3/Route3'),
-            loading: () => { return <div>Loading...</div>; },
-            delay: 300,
-            timeout: 10000
+        const LoadableRoute = Loadable({
+            loader:  () => import(/* webpackChunkName: "route-3" */'./routes/route-3/Route3'),
+            loading: () => null
         });
 
-        return (<LoadableRoute3 {...props} />);
+        return (<LoadableRoute {...props} />);
     };
 
     private renderNotFound = (props: any): JSX.Element => {
