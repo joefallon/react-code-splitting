@@ -24,7 +24,7 @@ module.exports = {
                 test: /\.worker\.ts$/,
                 use: {
                     loader: 'worker-loader',
-                    options: { inline: false, fallback: true }
+                    options: { inline: true, fallback: false }
                 }
             },
             {

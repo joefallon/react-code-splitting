@@ -1,13 +1,13 @@
 require('./App.css');
 
 import * as React from 'react';
+import { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router';
 
 import { IndexRouteProps } from './routes/index/IndexRouteProps';
 import { Route1Props } from './routes/route-1/Route1Props';
 import { Route2Props } from './routes/route-2/Route2Props';
 import { Route3Props } from './routes/route-3/Route3Props';
-import { lazy, Suspense } from 'react';
 
 
 export class App extends React.Component {
@@ -34,7 +34,7 @@ export class App extends React.Component {
         });
 
         return (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
                 <LoadableIndexRoute {...props} />
             </Suspense>
         );
@@ -46,7 +46,7 @@ export class App extends React.Component {
         });
 
         return (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
                 <LazyRoute {...props} />
             </Suspense>
         );
@@ -58,7 +58,7 @@ export class App extends React.Component {
         });
 
         return (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
                 <LazyRoute {...props} />
             </Suspense>
         );
@@ -70,7 +70,7 @@ export class App extends React.Component {
         });
 
         return (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
                 <LazyRoute {...props} />
             </Suspense>
         );
