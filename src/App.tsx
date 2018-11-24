@@ -4,12 +4,6 @@ import * as React from 'react';
 import { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router';
 
-import { IndexRouteProps } from './routes/index/IndexRouteProps';
-import { Route1Props } from './routes/route-1/Route1Props';
-import { Route2Props } from './routes/route-2/Route2Props';
-import { Route3Props } from './routes/route-3/Route3Props';
-
-
 export class App extends React.Component {
 
     public constructor(props: any) {
@@ -28,7 +22,7 @@ export class App extends React.Component {
         );
     }
 
-    private renderIndex = (props: IndexRouteProps): JSX.Element => {
+    private renderIndex = (props: any): JSX.Element => {
         const LoadableIndexRoute = lazy(() => {
             return import(/* webpackChunkName: "index-route" */'./routes/index/IndexRoute');
         });
@@ -40,7 +34,7 @@ export class App extends React.Component {
         );
     };
 
-    private renderRoute1 = (props: Route1Props): JSX.Element => {
+    private renderRoute1 = (props: any): JSX.Element => {
         const LazyRoute = lazy(() => {
             return import(/* webpackChunkName: "route-1" */'./routes/route-1/Route1');
         });
@@ -52,7 +46,7 @@ export class App extends React.Component {
         );
     };
 
-    private renderRoute2 = (props: Route2Props): JSX.Element => {
+    private renderRoute2 = (props: any): JSX.Element => {
         const LazyRoute = lazy(() => {
             return import(/* webpackChunkName: "route-2" */'./routes/route-2/Route2');
         });
@@ -64,7 +58,7 @@ export class App extends React.Component {
         );
     };
 
-    private renderRoute3 = (props: Route3Props): JSX.Element => {
+    private renderRoute3 = (props: any): JSX.Element => {
         const LazyRoute = lazy(() => {
             return import(/* webpackChunkName: "route-3" */'./routes/route-3/Route3');
         });
