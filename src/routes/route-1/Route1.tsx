@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Route1Props } from './Route1Props';
 import { Route1State } from './Route1State';
 
-// import FibonacciWorker from 'worker-loader!../../domain/Fibonacci.worker.ts';
+// import FibonacciWorker from 'worker-loader!../../domain/Fibonacci.worker';
 import FibonacciWorker from '../../domain/Fibonacci.worker';
 
 export default class Route1 extends React.Component<Route1Props, Route1State> {
