@@ -1,6 +1,6 @@
 import * as assert from 'assert';
+import Fibonacci from './Fibonacci';
 
-import { Fibonacci } from './Fibonacci';
 
 describe('Fibonacci', () => {
     it('#calculate returns the correct result for 0', async () => {

@@ -23,13 +23,13 @@ export class App extends React.Component {
     }
 
     private renderIndex = (props: any): JSX.Element => {
-        const LoadableIndexRoute = lazy(() => {
+        const LazyRoute = lazy(() => {
             return import(/* webpackChunkName: "index-route" */'./routes/index/IndexRoute');
         });
 
         return (
             <Suspense fallback={null}>
-                <LoadableIndexRoute {...props} />
+                <LazyRoute {...props} />
             </Suspense>
         );
     };

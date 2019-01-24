@@ -1,4 +1,4 @@
-import  Fibonacci from './Fibonacci';
+import Fibonacci from './Fibonacci';
 
 const worker: Worker = self as any;
 let fibonacci: Fibonacci = null;

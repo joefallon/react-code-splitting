@@ -1,5 +1,5 @@
 export default class Fibonacci {
-    private _num: number;
+    private readonly _num: number;
 
     public constructor(num: number) {
         this._num = num;
